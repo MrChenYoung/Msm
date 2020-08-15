@@ -3,7 +3,7 @@
 
 namespace framework\tools;
 
-
+require_once './framework/tools/DatabaseManager.class.php';
 class DatabaseDataManager extends DatabaseManager
 {
     /**
