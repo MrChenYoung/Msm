@@ -1,0 +1,11 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hello.js",
+  "scripts": {
+    "publish": "git add -A && git commit -m 'new' && git push vps master"
+  },
+  "author": "",
+  "license": "ISC"
+}
