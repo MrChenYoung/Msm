@@ -98,6 +98,7 @@
 <script src="static/js/less.min.js"></script>
 <script src="static/js/common.js" charset="utf-8"></script>
 <script>
+    var phoneNumber="";
     $(document).ready(function () {
         layui.use('element', function(){
             var $ = layui.jquery
@@ -117,11 +118,28 @@
                 }
             });
         });
-        
-        // 请求手机号码
-        function loadPhoneList() {
-            var url = "http://msm.ml/api.php?a=loadPhones";
 
-        }
-    })
+        // 请求手机号码
+        loadPhoneList();
+    });
+
+    // 请求手机号码
+    function loadPhoneList() {
+        var url = "http://msm.ml/api.php?a=loadPhones";
+        get(url,function (data) {
+            var phoneList = data.data;
+            var dom = "<option value=''>请选择手机号码</option>";
+            for (var i = 0; i < phoneList.length; i++){
+                var phone  = phoneList[i]["phone_number"];
+                dom += '<option value="'+ phone +'">'+ phone +'</option>';
+            }
+
+            layui.use('form',function () {
+                var form = layui.form;
+                $("#phone_select").html(dom);
+
+                form.render();
+            })
+        });
+    }
 </script>
