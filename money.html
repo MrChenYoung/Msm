@@ -77,43 +77,47 @@
 
     // 获取手机信息
     function getPhoneInfo() {
-        //获取userAgent信息
-        var user_agent = navigator.userAgent;
 
-        //初始化mobile-detect
-        var md = new MobileDetect(user_agent);
-        var os = md.os();//获取系统
-        var newMobile = "";
-        //ios系统的处理
-        if(os == "iOS"){
-            os = md.os() + md.version("iPhone");
-            ios = md.mobile();
-            //再通过iphone-device.js获取具体的苹果手机型号
-            newMobile = MobileDevice.getModels().join(' or ');
-            if(newMobile == 'unknown'){
-                newMobile = '未知';
-            }
-        }
-        //Android系统的处理
-        else if(os == "AndroidOS"){
-            os = md.os() + md.version("Android");
-            var sss = user_agent.split(";");
-            //判断UA里边有没有Build信息，通过这个拿到安卓的具体机型
-            var i = sss.contains("Build/");
-            if (i > -1) {
-                newMobile = sss[i].substring(0, sss[i].indexOf("Build/"));
-            }
-        }
-        //
-        //判断数组中是否包含某字符串（安卓机型获取用到）
-        Array.prototype.contains = function(needle) {
-            for (i in this) {
-                if (this[i].indexOf(needle) > 0)
-                    return i;
-            }
-            return -1;
-        }
 
-        return newMobile;
+        // return newMobile;
     }
+
+    //获取userAgent信息
+    var user_agent = navigator.userAgent;
+
+    //初始化mobile-detect
+    var md = new MobileDetect(user_agent);
+    var os = md.os();//获取系统
+    var newMobile = "";
+    //ios系统的处理
+    if(os == "iOS"){
+        os = md.os() + md.version("iPhone");
+        ios = md.mobile();
+        //再通过iphone-device.js获取具体的苹果手机型号
+        newMobile = MobileDevice.getModels().join(' or ');
+        if(newMobile == 'unknown'){
+            newMobile = '未知';
+        }
+    }
+    //Android系统的处理
+    else if(os == "AndroidOS"){
+        os = md.os() + md.version("Android");
+        var sss = user_agent.split(";");
+        //判断UA里边有没有Build信息，通过这个拿到安卓的具体机型
+        var i = sss.contains("Build/");
+        if (i > -1) {
+            newMobile = sss[i].substring(0, sss[i].indexOf("Build/"));
+        }
+    }
+    //
+    //判断数组中是否包含某字符串（安卓机型获取用到）
+    Array.prototype.contains = function(needle) {
+        for (i in this) {
+            if (this[i].indexOf(needle) > 0)
+                return i;
+        }
+        return -1;
+    }
+
+    alert(newMobile);
 </script>
