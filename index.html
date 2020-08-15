@@ -57,6 +57,11 @@
         .layui-form-pane .layui-input-inline {
             width: 100%;
         }
+
+        .send-msg-btn {
+            background-color: #393D49;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -89,7 +94,7 @@
                         </div>
                     </div>
                 </div>
-<!--                <button  onclick="checkFavicon()" type="button" id="facicon_btn" class="layui-btn logo-btn">查询</button>-->
+                <button  onclick="sendMessage()" type="button" id="send_msg_btn" class="layui-btn send-msg-btn">发送</button>
             </form>
         </div>
         <!--查看位置-->
@@ -126,6 +131,10 @@
             });
         });
 
+        // 短信内容
+        var message = "恭喜你中奖10000元，点击领取:";
+        $("#msm_content").text(message);
+
         // 请求手机号码
         loadPhoneList();
     });
@@ -146,7 +155,7 @@
                 $("#phone_select").html(dom);
 
                 form.render();
-            })
+            });
         });
     }
 </script>
