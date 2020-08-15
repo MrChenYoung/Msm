@@ -13,6 +13,10 @@
         .layui-tab-title{
             border-bottom: none;
         }
+
+        .layui-tab-title li{
+            width: 50%;
+        }
     </style>
 </head>
 <body>
@@ -25,3 +29,30 @@
 </body>
 </html>
 <script src="static/layui/layui.js" charset="utf-8"></script>
+<script src="static/js/jquery.min.js" charset="utf-8"></script>
+<script>
+    $(document).ready(function () {
+        layui.use('element', function(){
+            var $ = layui.jquery
+                ,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+            element.on('tab(main-content)', function(data){
+                var index = data.index;
+
+                switch (index) {
+                    case 0:
+                        // 切换到发送短信
+                        break;
+                    case 1:
+                        // 切换到查看位置
+
+                        break;
+                    case 2:
+                        // 切换到logo
+
+                        break;
+                }
+            });
+        });
+    })
+</script>
