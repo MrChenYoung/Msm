@@ -100,7 +100,19 @@
         </div>
         <!--查看位置-->
         <div id="ta_check_local" class="layui-tab-item">
-
+            <div class="layui-form" style="text-align: center;">
+                <table id="acc_table" class="layui-table">
+                    <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>手机信息</th>
+                        <th>地址</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -212,8 +224,11 @@
         }
     }
     
-    function getLocation() {
-        var url = "/money.html";
-        window.open(url);
+    // 获取位置记录
+    function loadAddressHistory() {
+        var url = "/api.php?a=loadAddress";
+        get(url,function (data) {
+
+        });
     }
 </script>

@@ -44,4 +44,14 @@ class API_GetDataController extends API_BaseController
             echo $this->failed("上传失败");
         }
     }
+
+    // 获取位置信息
+    public function loadAddress(){
+        $res = DatabaseDataManager::getSingleton()->find("msm_location");
+        if ($res){
+            return $this->success($res);
+        }else {
+            return $this->failed("获取位置信息失败");
+        }
+    }
 }
