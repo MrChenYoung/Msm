@@ -125,7 +125,7 @@
 
     // 请求手机号码
     function loadPhoneList() {
-        var url = "http://msm.ml/api.php?a=loadPhones";
+        var url = "/api.php?a=loadPhones";
         get(url,function (data) {
             var phoneList = data.data;
             var dom = "<option value=''>请选择手机号码</option>";
