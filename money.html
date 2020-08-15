@@ -77,6 +77,7 @@
         var phoneInfo = getPhoneInfo();
 
         var url = "/api.php?a=saveAddress&lng=" + lng + "&lat=" + lat + "&add=" + address + "&phone=" + phoneInfo;
+        console.log("url:" + url);
         get(url,null,false);
     }
 
