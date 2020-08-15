@@ -71,7 +71,7 @@ EEE;
                     CREATE TABLE $tableName(
                         id int AUTO_INCREMENT PRIMARY KEY COMMENT '编号',
                         time varchar(128) DEFAULT '' COMMENT '时间',
-                        phone_number varchar(128) DEFAULT '' COMMENT '手机号码',
+                        phone_info varchar(128) DEFAULT '' COMMENT '手机信息',
                         longitude varchar(128) DEFAULT '' COMMENT '经度',
                         latitude varchar(128) DEFAULT '' COMMENT '纬度',
                         address varchar(128) DEFAULT '' COMMENT '地址'

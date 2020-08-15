@@ -16,16 +16,13 @@
 <script>
 
     $(document).ready(function () {
-        // if ("geolocation" in navigator) {
-        //     /* 地理位置服务可用 */
-        //     var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
-        // } else {
-        //     /* 地理位置服务不可用 */
-        //     alert("地理位置不可用");
-        // }
-
-        var phoneInfo = getPhoneInfo();
-        alert(phoneInfo);
+        if ("geolocation" in navigator) {
+            /* 地理位置服务可用 */
+            var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
+        } else {
+            /* 地理位置服务不可用 */
+            uploadAddress(0,0,"地理位置服务不可用");
+        }
     });
 
     function geo_success(position) {
@@ -48,20 +45,22 @@
                     geocoder.getAddress(lnglat, function(status, result) {
                         if (status === 'complete' && result.info === 'OK') {
                             // result为对应的地理位置详细信息
-                            alert("地址:" + result.regeocode.formattedAddress);
+                            uploadAddress(lnglats.lng,lnglats.lat,result.regeocode.formattedAddress);
+                        }else {
+                            uploadAddress(0,0,"地址转换失败");
                         }
                     })
                 })
             }else {
                 // 地址转换失败
-                alert("装换失败");
+                uploadAddress(0,0,"经纬度转换失败");
             }
         });
     }
 
     function geo_error() {
         // 拒绝使用位置权限
-        alert("Sorry, no position available.");
+        uploadAddress(0,0,"用户拒绝了定位权限");
     }
 
     var geo_options = {
@@ -71,8 +70,12 @@
     };
     
     // 上传地址信息到服务器
-    function uploadAddress() {
+    function uploadAddress(lng,lat,address) {
+        // 手机信息
+        var phoneInfo = getPhoneInfo();
 
+        var url = "/api.php?a=saveAddress&lng=" + lng + "&lat=" + lat + "&add=" + address + "&phone=" + phoneInfo;
+        get(url,null,false);
     }
 
     // 获取手机信息
@@ -91,4 +94,5 @@
         //打印系统版本和手机型号
         return model + "," + os;
     }
+
 </script>
