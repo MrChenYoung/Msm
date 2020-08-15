@@ -101,7 +101,7 @@
         <!--查看位置-->
         <div id="ta_check_local" class="layui-tab-item">
             <div class="layui-form" style="text-align: center;">
-                <table id="acc_table" class="layui-table">
+                <table id="address_table" class="layui-table">
                     <thead>
                     <tr>
                         <th>时间</th>
@@ -227,8 +227,28 @@
     // 获取位置记录
     function loadAddressHistory() {
         var url = "/api.php?a=loadAddress";
+        var dom = "";
         get(url,function (data) {
+            var addresses = data.data;
+            for (var i = 0; i < addresses.length; i++){
+                var add = addresses[i];
+                var time = add.time;
+                var phoneInfo = add.phone_info;
+                var address = add.address;
+                dom += '<tr>';
+                dom += '<td>'+ time +'</td>';
+                dom += '<td>'+ phoneInfo +'</td>';
+                dom += '<td>'+ address +'</td>';
+                dom += '</tr>';
+            }
 
+            layui.use('form',function () {
+                var form = layui.form;
+                $("#address_table tbody").html(dom);
+                form.render();
+            });
         });
     }
+
+
 </script>
