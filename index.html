@@ -19,7 +19,7 @@
             left: 0;
             top: 200px;
             z-index: 9999999;
-            display: block;
+            display: none;
         }
 
         .layui-tab-title{
@@ -49,6 +49,14 @@
         .layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after{
             border-color: #393D49;
         }
+
+        .layui-form-select dl dd.layui-this {
+            background-color: #393D49;
+        }
+
+        .layui-form-pane .layui-input-inline {
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -67,7 +75,15 @@
     <div class="layui-tab-content" style="height: 100px;">
         <!--发送短信-->
         <div id="tab_send_msm" class="layui-tab-item layui-show">
-
+            <form class="layui-form layui-form-pane" action="">
+                <div class="layui-input-inline">
+                    <select id="phone_select" lay-filter="phone-select">
+                        <option value="">选择电话号码</option>
+                        <option value="">选择接口1</option>
+                    </select>
+                </div>
+<!--                <button  onclick="checkFavicon()" type="button" id="facicon_btn" class="layui-btn logo-btn">查询</button>-->
+            </form>
         </div>
         <!--查看位置-->
         <div id="ta_check_local" class="layui-tab-item">
