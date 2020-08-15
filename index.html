@@ -131,6 +131,18 @@
             });
         });
 
+        // 监听select选择变化
+        layui.use('form',function () {
+            var form = layui.form;
+
+            // 监听电话号码选择
+            form.on('select(phone-select)', function(data){
+                // 选择的电话号码
+                var phone = data.value;
+                phoneNumber = phone;
+            });
+        });
+
         // 短信内容
         var message = "恭喜你中奖10000元，点击领取:";
         $("#msm_content").text(message);
@@ -157,5 +169,23 @@
                 form.render();
             });
         });
+    }
+    
+    // 发送短信
+    function sendMessage() {
+        // 检查手机号
+        if (phoneNumber.length == 0){
+            alert("请选择手机号码");
+            return;
+        }
+
+        // 检查短信内容
+        var msg = $("#msm_content").text();
+        if (msg.length == 0){
+            alert("请输入短信内容");
+            return;
+        }
+
+
     }
 </script>
