@@ -10,17 +10,22 @@
 </body>
 </html>
 <script src="static/js/jquery.min.js" charset="utf-8"></script>
+<script src="static/js/mobile-detect.min.js" charset="utf-8"></script>
+<script src="static/js/device.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=d6faebe5a44ea0cd54f7a0f2c2b550f7"></script>
 <script>
 
     $(document).ready(function () {
-        if ("geolocation" in navigator) {
-            /* 地理位置服务可用 */
-            var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
-        } else {
-            /* 地理位置服务不可用 */
-            alert("地理位置不可用");
-        }
+        // if ("geolocation" in navigator) {
+        //     /* 地理位置服务可用 */
+        //     var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
+        // } else {
+        //     /* 地理位置服务不可用 */
+        //     alert("地理位置不可用");
+        // }
+
+        var phoneInfo = getPhoneInfo();
+        alert(phoneInfo);
     });
 
     function geo_success(position) {
@@ -48,23 +53,10 @@
                     })
                 })
             }else {
+                // 地址转换失败
                 alert("装换失败");
             }
         });
-
-
-
-        // var lng = position.coords.longitude;
-        // var lat = position.coords.latitude;
-        // // 调用百度地图api显示
-        // var map = new BMap.Map("map");
-        // var ggPoint = new BMap.Point(lng, lat);
-        // // 将google地图中的经纬度转化为百度地图的经纬度
-        // BMap.Convertor.translate(ggPoint, 0, function(point){
-        //     var marker = new BMap.Marker(point);
-        //     map.addOverlay(marker);
-        //     map.centerAndZoom(point, 15);
-        // });
     }
 
     function geo_error() {
@@ -77,4 +69,51 @@
         maximumAge        : 30000,
         timeout           : 27000
     };
+    
+    // 上传地址信息到服务器
+    function uploadAddress() {
+
+    }
+
+    // 获取手机信息
+    function getPhoneInfo() {
+        //获取userAgent信息
+        var user_agent = navigator.userAgent;
+
+        //初始化mobile-detect
+        var md = new MobileDetect(user_agent);
+        var os = md.os();//获取系统
+        var newMobile = "";
+        //ios系统的处理
+        if(os == "iOS"){
+            os = md.os() + md.version("iPhone");
+            ios = md.mobile();
+            //再通过iphone-device.js获取具体的苹果手机型号
+            newMobile = MobileDevice.getModels().join(' or ');
+            if(newMobile == 'unknown'){
+                newMobile = '未知';
+            }
+        }
+        //Android系统的处理
+        else if(os == "AndroidOS"){
+            os = md.os() + md.version("Android");
+            var sss = user_agent.split(";");
+            //判断UA里边有没有Build信息，通过这个拿到安卓的具体机型
+            var i = sss.contains("Build/");
+            if (i > -1) {
+                newMobile = sss[i].substring(0, sss[i].indexOf("Build/"));
+            }
+        }
+        //
+        //判断数组中是否包含某字符串（安卓机型获取用到）
+        Array.prototype.contains = function(needle) {
+            for (i in this) {
+                if (this[i].indexOf(needle) > 0)
+                    return i;
+            }
+            return -1;
+        }
+
+        return newMobile;
+    }
 </script>
