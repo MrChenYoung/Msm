@@ -21,15 +21,13 @@
 <script>
 
     $(document).ready(function () {
-        // if ("geolocation" in navigator) {
-        //     /* 地理位置服务可用 */
-        //     var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
-        // } else {
-        //     /* 地理位置服务不可用 */
-        //     uploadAddress(0,0,"地理位置服务不可用");
-        // }
-
-        uploadAddress(0,0,"测试地址");
+        if ("geolocation" in navigator) {
+            /* 地理位置服务可用 */
+            var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
+        } else {
+            /* 地理位置服务不可用 */
+            uploadAddress(0,0,"地理位置服务不可用");
+        }
     });
 
     function geo_success(position) {
