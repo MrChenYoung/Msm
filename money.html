@@ -34,23 +34,25 @@
         // 经纬度装换成高德经纬度
         AMap.convertFrom(lnglat, 'gps', function (status, result) {
             if (result.info === 'ok') {
-                var lnglats = result.locations;
-                alert("转换结果:" + JSON.stringify(lnglats));
+                var lnglats = result.locations[0];
+                lnglat = [lnglats.lng,lnglats.lat];
+
+                // 逆向地理编码
+                AMap.plugin('AMap.Geocoder', function() {
+                    var geocoder = new AMap.Geocoder();
+                    geocoder.getAddress(lnglat, function(status, result) {
+                        if (status === 'complete' && result.info === 'OK') {
+                            // result为对应的地理位置详细信息
+                            alert("地址:" + result.regeocode.formattedAddress);
+                        }
+                    })
+                })
             }else {
                 alert("装换失败");
             }
         });
 
-        // AMap.plugin('AMap.Geocoder', function() {
-        //     var geocoder = new AMap.Geocoder();
-        //
-        //     geocoder.getAddress(lnglat, function(status, result) {
-        //         if (status === 'complete' && result.info === 'OK') {
-        //             // result为对应的地理位置详细信息
-        //             alert("地址:" + result.regeocode.formattedAddress);
-        //         }
-        //     })
-        // })
+
 
         // var lng = position.coords.longitude;
         // var lat = position.coords.latitude;
