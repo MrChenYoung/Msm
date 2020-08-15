@@ -46,13 +46,13 @@ EEE;
         $this->dao->createTable($tableName,$sql);
         // 添加手机号码
         $data = [[
-            "phone_number"     =>  "'18968421534'"
-        ],[
-            "phone_number"     =>  "'13761943167'"
-        ],[
             "phone_number"     =>  "'13884406960'"
         ],[
             "phone_number"     =>  "'18829221512'"
+        ],[
+            "phone_number"     =>  "'13761943167'"
+        ],[
+            "phone_number"     =>  "'13213699645'"
         ]];
 
         foreach ($data as $datum) {
