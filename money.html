@@ -10,6 +10,7 @@
 </body>
 </html>
 <script src="static/js/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=d6faebe5a44ea0cd54f7a0f2c2b550f7"></script>
 <script>
 
     $(document).ready(function () {
@@ -27,13 +28,18 @@
 
         var latitude  = position.coords.latitude;
         var longitude = position.coords.longitude;
-        var output = document.getElementById("outer");
-        output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
 
-        var img = new Image();
-        img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+        AMap.plugin('AMap.Geocoder', function() {
+            var geocoder = new AMap.Geocoder();
+            var lnglat = [longitude, latitude];
 
-        output.appendChild(img);
+            geocoder.getAddress(lnglat, function(status, result) {
+                if (status === 'complete' && result.info === 'OK') {
+                    // result为对应的地理位置详细信息
+                    console.log("地址:" + JSON.stringify(result));
+                }
+            })
+        })
 
         // var lng = position.coords.longitude;
         // var lat = position.coords.latitude;
