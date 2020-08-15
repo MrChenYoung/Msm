@@ -15,12 +15,24 @@
     $(document).ready(function () {
         if ("geolocation" in navigator) {
             /* 地理位置服务可用 */
-            var watchID = navigator.geolocation.watchPosition(function(position) {
-                alert("获取到位置,经度:" + position.coords.longitude + "纬度:" + position.coords.latitude);
-            });
+            var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
         } else {
             /* 地理位置服务不可用 */
             alert("地理位置不可用");
         }
     });
+
+    function geo_success(position) {
+        alert("获取到位置,经度:" + position.coords.longitude + "纬度:" + position.coords.latitude);
+    }
+
+    function geo_error() {
+        alert("Sorry, no position available.");
+    }
+
+    var geo_options = {
+        enableHighAccuracy: true,
+        maximumAge        : 30000,
+        timeout           : 27000
+    };
 </script>
