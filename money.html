@@ -25,7 +25,7 @@
         // }
 
         var phoneInfo = getPhoneInfo();
-        // alert(phoneInfo);
+        alert(phoneInfo);
     });
 
     function geo_success(position) {
@@ -87,9 +87,8 @@
         } else if (os == "AndroidOS") {//Android系统的处理
             os = md.os() + md.version("Android");
         }
-        alert(os + "---" + model);//打印系统版本和手机型号
-        // console.log(md,"aaaa");
 
-        // return newMobile;
+        //打印系统版本和手机型号
+        return model + " " + os;
     }
 </script>
