@@ -36,7 +36,7 @@
             geocoder.getAddress(lnglat, function(status, result) {
                 if (status === 'complete' && result.info === 'OK') {
                     // result为对应的地理位置详细信息
-                    alert("地址:" + JSON.stringify(result));
+                    alert("地址:" + result.regeocode.formattedAddress);
                 }
             })
         })
