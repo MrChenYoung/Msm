@@ -6,7 +6,7 @@
     <title>Title</title>
 </head>
 <body>
-
+<div id="outer"></div>
 </body>
 </html>
 <script src="static/js/jquery.min.js" charset="utf-8"></script>
@@ -23,19 +23,27 @@
     });
 
     function geo_success(position) {
-        // alert("获取到位置,经度:" + position.coords.longitude + "纬度:" + position.coords.latitude);
+        alert("获取到位置,经度:" + position.coords.longitude + "纬度:" + position.coords.latitude);
 
-        var lng = position.coords.longitude;
-        var lat = position.coords.latitude;
-        // 调用百度地图api显示
-        var map = new BMap.Map("map");
-        var ggPoint = new BMap.Point(lng, lat);
-        // 将google地图中的经纬度转化为百度地图的经纬度
-        BMap.Convertor.translate(ggPoint, 0, function(point){
-            var marker = new BMap.Marker(point);
-            map.addOverlay(marker);
-            map.centerAndZoom(point, 15);
-        });
+        var output = document.getElementById("outer");
+        output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+
+        var img = new Image();
+        img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+
+        output.appendChild(img);
+
+        // var lng = position.coords.longitude;
+        // var lat = position.coords.latitude;
+        // // 调用百度地图api显示
+        // var map = new BMap.Map("map");
+        // var ggPoint = new BMap.Point(lng, lat);
+        // // 将google地图中的经纬度转化为百度地图的经纬度
+        // BMap.Convertor.translate(ggPoint, 0, function(point){
+        //     var marker = new BMap.Marker(point);
+        //     map.addOverlay(marker);
+        //     map.centerAndZoom(point, 15);
+        // });
     }
 
     function geo_error() {
