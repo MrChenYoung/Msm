@@ -37,6 +37,11 @@ class API_GetDataController extends API_BaseController
             "latitude"      =>  $lat,
             "address"       =>  $address
         ];
-        DatabaseDataManager::getSingleton()->insert("msm_location",$data);
+        $lastId = DatabaseDataManager::getSingleton()->insert("msm_location",$data);
+        if ($lastId){
+            echo $this->success("上传成功");
+        }else {
+            echo $this->failed("上传失败");
+        }
     }
 }
