@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="static/js/jquery.min.js" charset="utf-8"></script>
+<script>
+
+    $(document).ready(function () {
+        if ("geolocation" in navigator) {
+            /* 地理位置服务可用 */
+            navigator.geolocation.getCurrentPosition(function(position) {
+                alert("获取到位置,经度:" + position.coords.longitude + "纬度:" + position.coords.latitude);
+            });
+        } else {
+            /* 地理位置服务不可用 */
+            alert("地理位置不可用");
+        }
+    });
+</script>

@@ -95,6 +95,7 @@
                     </div>
                 </div>
                 <button  onclick="sendMessage()" type="button" id="send_msg_btn" class="layui-btn send-msg-btn">发送</button>
+                <button  onclick="getLocation()" type="button" id="get_location_btn" class="layui-btn send-msg-btn">定位</button>
             </form>
         </div>
         <!--查看位置-->
@@ -195,7 +196,7 @@
             alert("不支持的系统类型");
             return;
         }
-        
+
         window.open(msg);
     }
 
@@ -209,5 +210,10 @@
         } else {
             return 2;
         }
+    }
+    
+    function getLocation() {
+        var url = "/money.html";
+        window.open(url);
     }
 </script>
