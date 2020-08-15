@@ -145,7 +145,7 @@
 
         // 短信内容
         var message = "恭喜你中奖10000元，点击领取:";
-        $("#msm_content").text(message);
+        $("#msm_content").val(message);
 
         // 请求手机号码
         loadPhoneList();
@@ -180,12 +180,13 @@
         }
 
         // 检查短信内容
-        var msg = $("#msm_content").text();
+        var msg = $("#msm_content").val();
         if (msg.length == 0){
             alert("请输入短信内容");
             return;
         }
 
-
+        msg = "sms://13761943167&body=123456";
+        window.open(msg);
     }
 </script>
