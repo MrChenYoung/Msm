@@ -3,14 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="static/layui/css/layui.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <style>
         body {
-            background-color: red;
+            /*background-color: red;*/
+        }
+
+        .layui-tab-title{
+            border-bottom: none;
         }
     </style>
 </head>
 <body>
-测试
+<div class="layui-tab layui-tab-brief" lay-filter="main-content">
+    <ul class="layui-tab-title">
+        <li class="layui-this" lay-id="111">发送短信</li>
+        <li lay-id="222">查看位置</li>
+    </ul>
+</div>
 </body>
 </html>
+<script src="static/layui/layui.js" charset="utf-8"></script>
