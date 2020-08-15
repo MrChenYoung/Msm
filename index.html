@@ -186,7 +186,28 @@
             return;
         }
 
-        msg = "sms://"+ phoneNumber + "&body=" + msg;
+        var clientType = judgeClient();
+        if (clientType == 0){
+            msg = "sms://"+ phoneNumber + "&body=" + msg;
+        }else if (clientType == 1){
+            msg = "sms://"+ phoneNumber + "?body=" + msg;
+        }else {
+            alert("不支持的系统类型");
+            return;
+        }
+        
         window.open(msg);
+    }
+
+    /*判断客户端系统类型 0:iOS 1:Android*/
+    function judgeClient(){
+        let client = '';
+        if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {  //判断iPhone|iPad|iPod|iOS
+            return 0;
+        } else if (/(Android)/i.test(navigator.userAgent)) {  //判断Android
+            return 1;
+        } else {
+            return 2;
+        }
     }
 </script>
