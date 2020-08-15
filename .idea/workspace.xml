@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a75a3f45-7c66-4f5c-9fc0-330b967cdc24" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/Api/API_GetDataController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +27,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1g7Ary19WeP21BmfBXIEE7lKnfl" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="添加" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -47,11 +51,21 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597455459651</updated>
-      <workItem from="1597455462596" duration="2105000" />
+      <workItem from="1597455462596" duration="7461000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="605" y="327" key="NewPhpClassDialog" timestamp="1597468249712">
+      <screen x="0" y="23" width="1680" height="973" />
+    </state>
+    <state x="605" y="327" key="NewPhpClassDialog/0.23.1680.973@0.23.1680.973" timestamp="1597468249712" />
+    <state x="669" y="429" key="NewPhpFileDialog" timestamp="1597459505333">
+      <screen x="0" y="23" width="1680" height="973" />
+    </state>
+    <state x="669" y="429" key="NewPhpFileDialog/0.23.1680.973@0.23.1680.973" timestamp="1597459505333" />
   </component>
 </project>

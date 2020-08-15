@@ -17,6 +17,26 @@
         .layui-tab-title li{
             width: 40%;
         }
+
+        .layui-tab-brief>.layui-tab-title .layui-this {
+            color: #393D49;
+            font-size: 20px;
+            font-weight: 300;
+        }
+
+        .layui-tab-title li {
+            color: #cccccc;
+            font-size: 20px;
+            font-weight: 300;
+        }
+
+        .layui-tab-title li:hover {
+            color: #393D49;
+        }
+
+        .layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after{
+            border-color: #393D49;
+        }
     </style>
 </head>
 <body>
@@ -25,6 +45,16 @@
         <li class="layui-this" lay-id="111">发送短信</li>
         <li lay-id="222">查看位置</li>
     </ul>
+    <div class="layui-tab-content" style="height: 100px;">
+        <!--发送短信-->
+        <div id="tab_send_msm" class="layui-tab-item layui-show">
+
+        </div>
+        <!--查看位置-->
+        <div id="ta_check_local" class="layui-tab-item">
+
+        </div>
+    </div>
 </div>
 </body>
 </html>
@@ -45,10 +75,6 @@
                         break;
                     case 1:
                         // 切换到查看位置
-
-                        break;
-                    case 2:
-                        // 切换到logo
 
                         break;
                 }
