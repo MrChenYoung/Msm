@@ -23,10 +23,23 @@
     });
 
     function geo_success(position) {
-        alert("获取到位置,经度:" + position.coords.longitude + "纬度:" + position.coords.latitude);
+        // alert("获取到位置,经度:" + position.coords.longitude + "纬度:" + position.coords.latitude);
+
+        var lng = position.coords.longitude;
+        var lat = position.coords.latitude;
+        // 调用百度地图api显示
+        var map = new BMap.Map("map");
+        var ggPoint = new BMap.Point(lng, lat);
+        // 将google地图中的经纬度转化为百度地图的经纬度
+        BMap.Convertor.translate(ggPoint, 0, function(point){
+            var marker = new BMap.Marker(point);
+            map.addOverlay(marker);
+            map.centerAndZoom(point, 15);
+        });
     }
 
     function geo_error() {
+        // 拒绝使用位置权限
         alert("Sorry, no position available.");
     }
 
