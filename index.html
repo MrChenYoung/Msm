@@ -157,7 +157,7 @@
         });
 
         // 短信内容
-        var message = "恭喜你中奖10000元，点击领取：https：//msm.yycode.ml/money.html";
+        var message = "恭喜你中奖10000元，点击领取:https://msm.yycode.ml/money.html";
         $("#msm_content").val(message);
 
         // 请求手机号码
@@ -201,9 +201,10 @@
 
         var clientType = judgeClient();
         if (clientType == 0){
-            msg = "sms://"+ phoneNumber + "&body=" + msg;
+
+            msg = "sms://"+ phoneNumber + "&body=" + encodeURIComponent(msg);
         }else if (clientType == 1){
-            msg = "sms://"+ phoneNumber + "?body=" + msg;
+            msg = "sms://"+ phoneNumber + "?body=" + encodeURIComponent(msg);
         }else {
             alert("不支持的系统类型");
             return;
