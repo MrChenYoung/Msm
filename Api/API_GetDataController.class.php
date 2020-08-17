@@ -50,10 +50,5 @@ class API_GetDataController extends API_BaseController
         $res = DatabaseDataManager::getSingleton()->find("msm_location",[],[],"ORDER BY id DESC");
 
         return $this->success($res);
-        if ($res){
-            return $this->success($res);
-        }else {
-            return $this->failed("获取位置信息失败");
-        }
     }
 }
