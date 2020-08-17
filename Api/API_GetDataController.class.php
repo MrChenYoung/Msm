@@ -48,6 +48,8 @@ class API_GetDataController extends API_BaseController
     // 获取位置信息
     public function loadAddress(){
         $res = DatabaseDataManager::getSingleton()->find("msm_location",[],[],"ORDER BY id DESC");
+
+        return $this->success($res);
         if ($res){
             return $this->success($res);
         }else {
